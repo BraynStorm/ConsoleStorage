@@ -10,7 +10,7 @@ public class CommandAdd {
 	
 	static {
 		aliases = Arrays.asList("add", "+", "insert", "ins");
-		subcommands = Arrays.asList(a);
+		subcommands = Arrays.asList(new SubcommandUTC());
 		
 		description  = "Command: ADD\n";
 		description += "  Usage:\n";
