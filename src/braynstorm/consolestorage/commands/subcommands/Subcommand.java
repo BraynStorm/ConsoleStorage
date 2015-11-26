@@ -1,4 +1,4 @@
-package braynstorm.consolestorage.commands;
+package braynstorm.consolestorage.commands.subcommands;
 
 public abstract class Subcommand {
 	public abstract boolean isMe(String cmd);

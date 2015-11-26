@@ -1,4 +1,4 @@
-package braynstorm.consolestorage.commands;
+package braynstorm.consolestorage.commands.subcommands;
 
 public class SubcommandUTC extends Subcommand {
 	

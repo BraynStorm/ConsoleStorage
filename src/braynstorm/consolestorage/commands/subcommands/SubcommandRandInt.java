@@ -1,4 +1,4 @@
-package braynstorm.consolestorage.commands;
+package braynstorm.consolestorage.commands.subcommands;
 
 import java.util.Random;
 
@@ -13,13 +13,12 @@ public class SubcommandRandInt extends Subcommand {
 
 	@Override
 	public String getValue(String... args) {
-		int min = Integer.MIN_VALUE;
 		int max = Integer.MAX_VALUE;
 		
 		if(args.length >= 1)
-			min = Integer.parseInt(args[0]);
+			max = Integer.parseInt(args[0]);
 		
-		return rng.next
+		return rng.nextInt(max) + "";
 	}
 
 }

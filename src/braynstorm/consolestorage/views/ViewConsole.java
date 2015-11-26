@@ -1,35 +1,34 @@
 package braynstorm.consolestorage.views;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
+import braynstorm.consolestorage.commands.Command;
+import braynstorm.consolestorage.commands.NoSuchCommandException;
+
 public class ViewConsole extends View {
-	
-	private ArrayList<String> commands;
 	private Scanner input;
 	
 	public ViewConsole() {
 		input = new Scanner(System.in);
-		commands = new ArrayList<>(); // Yeah, Science!
 		
-		
-	}
-	
-	public boolean verifyCommand(String command) {
-		
-		
-		return false;
+		System.out.println("##############################");
+		System.out.println("#       Console Storage      #");
+		System.out.println("##############################\n");
 	}
 	
 	@Override
 	public boolean mainLoop() {
-		String cmd = input.nextLine();
+		String line = input.nextLine();
+		String[] parts = line.split(" ", 1);
 		
-		if(verifyCommand(cmd)){
-			
+		try {
+			Command.exists(command);
+		} catch (NoSuchCommandException e) {
+			e.printFormatted();
+			return false;
 		}
 		
-		return false;
+		return true;
 	}
 	
 }
