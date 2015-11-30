@@ -5,12 +5,12 @@ import java.util.List;
 
 import braynstorm.consolestorage.commands.subcommands.Subcommand;
 import braynstorm.consolestorage.commands.subcommands.SubcommandUTC;
+import braynstorm.consolestorage.controllers.ControllerStorage;
 
 public class CommandAdd extends Command{
 	public List<Subcommand> subcommands;
 	public String description;
 	
-	private static CommandAdd instance;
 	private CommandAdd() {
 		super();
 		subcommands = Arrays.asList(new SubcommandUTC());
@@ -37,7 +37,11 @@ public class CommandAdd extends Command{
 		description += "    _RANDFLOAT [min [, max]] - Inserts a pseudo-randomly generated floating-point number into the field.\n";
 		description += "  Examples:\n";
 		description += "    add field_1 This is an example and no one will look at";
+		
+		aliases.add("add");
 	}
+	
+	private static CommandAdd instance;
 	
 	public static CommandAdd getInstance(){
 		if(instance == null)
@@ -46,16 +50,11 @@ public class CommandAdd extends Command{
 		return instance;
 	}
 	
-	
-	
 	@Override
 	public void invoke(String arguments) {
 		String[] parts = arguments.split(" ", 2);
 		
-		for(String s : parts){
-			System.out.println("ARG: " + s);
-		}
-		
+		ControllerStorage.getInstance().storeData(parts[0], parts[1]);
 	}
 	
 }

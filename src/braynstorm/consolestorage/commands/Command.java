@@ -7,9 +7,9 @@ public abstract class Command {
 	public static final List<Command> commands = new ArrayList<>();
 	public final List<String> aliases;
 	
-	public Command(){
+	protected Command(){
 		aliases = new ArrayList<>();
-		Command.add(this);
+		commands.add(this);
 	}
 	
 	public static final Command find(String name) throws NoSuchCommandException {
@@ -21,17 +21,9 @@ public abstract class Command {
 		throw new NoSuchCommandException(name);
 	}
 	
-	public static final boolean exists(String name) {
-		
-	}
-	
-	public boolean isMe(String cmd) {
-		return aliases.contains(cmd);
+	public boolean isMe(String name) {
+		return aliases.contains(name);
 	}
 	
 	public abstract void invoke(String args);
-
-	protected static void add(Command cmd) {
-		commands.add(cmd);
-	}
 }
