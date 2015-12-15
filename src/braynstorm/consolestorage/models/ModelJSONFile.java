@@ -4,6 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import braynstorm.consolestorage.core.Start;
+import braynstorm.consolestorage.exceptions.NoSuchFieldException;
 
 public class ModelJSONFile extends Model {
 	private JSONObject data;
@@ -21,7 +22,7 @@ public class ModelJSONFile extends Model {
 	}
 
 	@Override
-	public boolean putData(String fieldName, String data) {
+	public boolean putData(String fieldName, Object data) {
 		this.data.put(fieldName, data);
 		return true;
 	}
@@ -31,6 +32,11 @@ public class ModelJSONFile extends Model {
 		if(data.has(fieldName))
 			return data.getString(fieldName);
 		
-		throw new NoSuchFieldException();
+		throw new NoSuchFieldException(fieldName);
+	}
+
+	@Override
+	public boolean hasField(String fieldName) {
+		return data.has(fieldName) && data.getString(fieldName) != null;
 	}
 }

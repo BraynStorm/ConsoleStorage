@@ -6,6 +6,7 @@ import java.util.List;
 import braynstorm.consolestorage.commands.subcommands.Subcommand;
 import braynstorm.consolestorage.commands.subcommands.SubcommandUTC;
 import braynstorm.consolestorage.controllers.ControllerStorage;
+import braynstorm.consolestorage.exceptions.CommandFailedException;
 
 public class CommandAdd extends Command{
 	public List<Subcommand> subcommands;
@@ -51,7 +52,7 @@ public class CommandAdd extends Command{
 	}
 	
 	@Override
-	public void invoke(String arguments) {
+	public void invoke(String arguments) throws CommandFailedException {
 		String[] parts = arguments.split(" ", 2);
 		
 		ControllerStorage.getInstance().storeData(parts[0], parts[1]);

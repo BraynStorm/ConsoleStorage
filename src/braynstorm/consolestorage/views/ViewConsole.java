@@ -3,8 +3,9 @@ package braynstorm.consolestorage.views;
 import java.util.Scanner;
 
 import braynstorm.consolestorage.commands.Command;
-import braynstorm.consolestorage.commands.NoSuchCommandException;
 import braynstorm.consolestorage.controllers.ControllerStorage;
+import braynstorm.consolestorage.exceptions.CommandFailedException;
+import braynstorm.consolestorage.exceptions.NoSuchCommandException;
 
 public class ViewConsole extends View {
 	private Scanner input;
@@ -31,6 +32,8 @@ public class ViewConsole extends View {
 		} catch (NoSuchCommandException e) {
 			e.printFormatted();
 			return true;
+		} catch (CommandFailedException e) {
+			e.printFormatted();
 		}
 		
 		return true;

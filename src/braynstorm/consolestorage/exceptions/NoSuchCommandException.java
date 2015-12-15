@@ -1,4 +1,4 @@
-package braynstorm.consolestorage.commands;
+package braynstorm.consolestorage.exceptions;
 
 public class NoSuchCommandException extends Exception {
 	private static final long serialVersionUID = -6014421079620305486L;
